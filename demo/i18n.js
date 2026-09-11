@@ -55,9 +55,9 @@ const I18N = {
   },
   // Documents
   docs: {
-    generate: { de: 'PDF generieren', en: 'Generate PDF', ru: 'Создать PDF' },
+    generate: { de: 'Beispiel-PDF öffnen', en: 'Open sample PDF', ru: 'Открыть пример PDF' },
     welpenpaket: { de: 'Welpen-Paket', en: 'Puppy Packet', ru: 'Пакет щенка' },
-    welpenpaket_desc: { de: 'Komplett-PDF: Kaufvertrag + Stammbaum + Impfübersicht + Fütterungsplan + QR', en: 'Complete PDF: contract + pedigree + vaccines + feeding plan + QR', ru: 'Полный PDF: договор + родословная + прививки + кормление + QR' },
+    welpenpaket_desc: { de: 'Übergabeübersicht mit Checkliste. Private Originalanlagen gehören nur in das angemeldete Beta-Paket.', en: 'Handover overview with a checklist. Private original attachments belong only in the signed-in beta package.', ru: 'Обзор передачи с чек-листом. Приватные оригиналы входят только в пакет авторизованной беты.' },
     kaufvertrag_desc: { de: 'Ungeprüfte Demo-Vorlage mit automatisch übernommenen Profildaten', en: 'Unreviewed demo template with profile data filled in automatically', ru: 'Непроверенный демо-шаблон с автоматической подстановкой данных профиля' },
     wurfmeldung_desc: { de: 'Wurfmeldung-Datenblatt für Ihren Zuchtverein (Pre-Fill für Vereins-Formular)', en: 'Litter registration data sheet for your breed club (pre-fill helper)', ru: 'Лист данных Wurfmeldung для подачи в Verein (помощник pre-fill)' }
   }

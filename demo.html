@@ -10,11 +10,11 @@
 <meta name="robots" content="noindex,follow">
 <link rel="canonical" href="https://wurfkit.de/demo.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="fonts/fonts.css">
+<noscript><link rel="stylesheet" href="fonts/fonts.css"></noscript>
 <style>
 :root{
   --p:#2D6A4F;--pl:#52B788;--pp:#D8F3DC;--pd:#1B4332;
@@ -113,14 +113,14 @@ main{flex:1;padding-bottom:96px}
 /* Mobile sticky CTA — keeps "back to landing + waitlist" within reach
    while user explores demo. Hidden on desktop where the back link in the
    header is already easy to reach. */
-.stickycta{display:none;position:fixed;bottom:68px;left:12px;right:12px;z-index:50;background:linear-gradient(135deg,#2D6A4F,#52B788);color:#fff;text-decoration:none;border-radius:14px;padding:.85rem 1rem;font-size:.85rem;font-weight:600;letter-spacing:-.01em;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 10px 28px rgba(45,106,79,.4),0 2px 6px rgba(0,0,0,.15)}
+.stickycta{display:none;position:static;margin:20px 16px;background:linear-gradient(135deg,#2D6A4F,#52B788);color:#fff;text-decoration:none;border-radius:14px;padding:.85rem 1rem;font-size:.85rem;font-weight:600;letter-spacing:-.01em;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 10px 28px rgba(45,106,79,.4),0 2px 6px rgba(0,0,0,.15)}
 .stickycta .icon{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;background:rgba(255,255,255,.18);border-radius:50%;font-size:.75rem;flex-shrink:0}
 .stickycta .arrow{font-size:1.1rem;transition:transform .2s;flex-shrink:0}
 .stickycta:hover{transform:translateY(-1px);box-shadow:0 14px 32px rgba(45,106,79,.5)}
 .stickycta:hover .arrow{transform:translateX(3px)}
 .stickycta .label{flex:1;line-height:1.25}
-@media(max-width:780px){.stickycta{display:flex}main{padding-bottom:158px}}
-@media(max-width:520px){.stickycta{bottom:64px;padding:.75rem .9rem;font-size:.8rem}main{padding-bottom:150px}}
+@media(max-width:780px){.stickycta{display:flex}}
+@media(max-width:520px){.stickycta{padding:.75rem .9rem;font-size:.8rem}}
 .cnt{max-width:1200px;margin:0 auto;padding:1.5rem 1.25rem}
 
 /* Tab nav */
@@ -417,7 +417,7 @@ svg.ped{display:block;min-width:920px}
 @keyframes mi{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
 .mx{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:var(--surf2);color:var(--t2);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .15s;z-index:10;border:1px solid var(--b)}
 .mx:hover{background:var(--err);color:#fff;border-color:var(--err)}
-.mh{padding:1.5rem 1.75rem 1rem;border-bottom:1px solid var(--b)}
+.mh{padding:1.5rem 3.75rem 1rem 1.75rem;border-bottom:1px solid var(--b)}
 .mt{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:500;letter-spacing:-.01em}
 .mss{color:var(--t3);font-size:.85rem;margin-top:2px}
 .mb{padding:1.5rem 1.75rem 1.75rem}
@@ -428,6 +428,8 @@ svg.ped{display:block;min-width:920px}
 .pdfprev .par{font-weight:600;margin-top:1rem;letter-spacing:.3px}
 .pdfprev .ku{display:grid;grid-template-columns:auto 1fr;gap:.4rem 1.5rem;margin:.75rem 0;font-family:'DM Sans',sans-serif;font-size:.82rem}
 .pdfprev .ku b{color:var(--t3);font-weight:500}
+
+.sample-preview{font-family:'DM Sans',sans-serif}.sample-preview>a{display:inline-flex;align-items:center;min-height:44px;margin:.7rem 0;padding:.5rem .8rem;border:1px solid var(--p);border-radius:8px;font-weight:600;line-height:1.4;text-decoration:underline}
 
 /* Weight chart */
 .chrt{margin-top:1rem;background:var(--surf);border:1px solid var(--b);border-radius:var(--rs);padding:1rem;height:240px;position:relative}
@@ -572,17 +574,17 @@ body.l-en .en-block{display:block}body.l-ru .ru-block{display:block}
       <div class="oc">
         <div class="oc-hd">
           <div class="oc-ti">
-            <div class="oc-lab"><span class="de">WURF «A» IST BEREIT</span><span class="en">LITTER «A» IS READY</span><span class="ru">ПОМЁТ «A» ГОТОВ</span></div>
+            <div class="oc-lab"><span class="de">BEISPIELWURF «A»</span><span class="en">SAMPLE LITTER «A»</span><span class="ru">ПРИМЕР ПОМЁТА «A»</span></div>
             <h2 class="oc-h"><span class="de">5 Welpen · 3 Dokumente · 1 Klick</span><span class="en">5 puppies · 3 documents · 1 click</span><span class="ru">5 щенков · 3 документа · 1 клик</span></h2>
-            <p class="oc-sub"><span class="de">Luna × Apollo, Wurftag 12.01.2026. Aaron, Ben, Caro, Diego, Elsa — alle Unterlagen sind vorbereitet.</span><span class="en">Luna × Apollo, whelp date 2026-01-12. Aaron, Ben, Caro, Diego, Elsa — all documents prepared.</span><span class="ru">Luna × Apollo, дата рождения 12.01.2026. Aaron, Ben, Caro, Diego, Elsa — все документы готовы.</span></p>
+            <p class="oc-sub"><span class="de">Luna × Apollo, Wurftag 12.01.2026. Beispiel-PDFs für Aaron, Ben und Diego. Caro und Elsa haben noch keine Käuferzuordnung.</span><span class="en">Luna × Apollo, whelp date 2026-01-12. Sample PDFs for Aaron, Ben and Diego. Caro and Elsa do not have assigned buyers yet.</span><span class="ru">Luna × Apollo, дата рождения 12.01.2026. Примеры PDF для Aaron, Ben и Diego. Покупатели Caro и Elsa ещё не назначены.</span></p>
           </div>
         </div>
         <div class="oc-actions">
           <button class="oc-card oc-primary" type="button" onclick="openPDFPreview('welpenpaket','aaron')">
             <div class="oc-ic">📦</div>
             <div class="oc-tx">
-              <div class="oc-nm"><span class="de">Welpen-Paket erstellen</span><span class="en">Generate puppy packet</span><span class="ru">Собрать Welpen-Paket</span><span class="info-i" onclick="event.stopPropagation();openHint('paket',event)" aria-hidden="true">i</span></div>
-              <div class="oc-mt"><span class="de">PDF + QR-Code für Aaron · 5 Welpen verfügbar</span><span class="en">PDF + QR for Aaron · 5 puppies available</span><span class="ru">PDF + QR для Aaron · 5 щенков</span></div>
+              <div class="oc-nm"><span class="de">Übergabe-Beispiel öffnen</span><span class="en">Open sample handover</span><span class="ru">Пример передачи щенка</span><span class="info-i" onclick="event.stopPropagation();openHint('paket',event)" aria-hidden="true">i</span></div>
+              <div class="oc-mt"><span class="de">Beispiel-PDF für Aaron · ohne private Anlagen</span><span class="en">Sample PDF for Aaron · no private attachments</span><span class="ru">Пример PDF для Aaron · без приватных вложений</span></div>
             </div>
             <span class="oc-ar">→</span>
           </button>
@@ -646,7 +648,7 @@ body.l-en .en-block{display:block}body.l-ru .ru-block{display:block}
   <section class="tabview" id="tab-docs" data-tab="docs">
     <div class="cnt">
       <h1><span class="de">Dokumente</span><span class="en">Documents</span><span class="ru">Документы</span></h1>
-      <p class="sub2"><span class="de">Automatisch generierte PDFs aus Profilen. Klick → echtes PDF herunterladen.</span><span class="en">Auto-generated PDFs from profiles. Click → download real PDF.</span><span class="ru">Авто-PDF из профилей. Клик → скачать настоящий PDF.</span></p>
+      <p class="sub2"><span class="de">Beispiel-PDFs aus den aktuellen Beta-Vorlagen. Vorschau und Download zeigen denselben Datenstand.</span><span class="en">Sample PDFs from the current beta templates. Preview and download show the same snapshot.</span><span class="ru">Примеры PDF из текущих шаблонов беты. Превью и скачивание показывают один документ.</span></p>
       <div class="dgrid" id="doc-list"></div>
       <div class="disc">
         <div>
@@ -714,14 +716,14 @@ body.l-en .en-block{display:block}body.l-ru .ru-block{display:block}
       </div>
     </div>
   </section>
-</main>
-
-<!-- Mobile sticky CTA: keeps "Warteliste sichern" within reach when scrolling demo -->
+<!-- Mobile CTA stays in document flow, above the bottom navigation. -->
 <a href="/#signup" class="stickycta" aria-label="Frühzugang sichern — zur Warteliste">
   <span class="icon">▶</span>
   <span class="label"><span class="de">Frühzugang sichern</span><span class="en">Reserve early access</span><span class="ru">Записаться в waitlist</span></span>
   <span class="arrow">→</span>
 </a>
+
+</main>
 
 <nav class="tabs" role="navigation" aria-label="Hauptnavigation">
 <div class="tbi">
@@ -890,6 +892,8 @@ body.l-en .en-block{display:block}body.l-ru .ru-block{display:block}
 <script src="demo/pedigree.js"></script>
 <script src="demo/coi.js"></script>
 <script src="demo/pdf-templates.js"></script>
+<script src="samples/manifest.js"></script>
+<script src="demo/pdf-samples.js"></script>
 <script src="demo/app.js"></script>
 
 </body>
