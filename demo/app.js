@@ -16,11 +16,8 @@ function loadScript(src) {
     document.head.appendChild(s);
   });
 }
-const PDFLibs = () => Promise.all([
-  loadScript('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js'),
-  loadScript('https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js'),
-  loadScript('https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js'),
-]);
+// Demo PDFs are generated from the beta templates before publication.
+const PDFLibs = () => Promise.resolve();
 const ChartLib = () => loadScript('https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js');
 
 function setActiveTabUI(tab) {
@@ -151,9 +148,9 @@ const HINTS = {
   },
   paket: {
     label: { de: 'Welpen-Paket + QR-Code', en: 'Welpen-Paket + QR code', ru: 'Welpen-Paket + QR-код' },
-    text: { de: 'Das Welpen-Paket bündelt die wichtigsten Informationen für neue Besitzer (Vertrag, Stammbaum, Impfungen, Fütterung). Der QR-Code kann auf eine freigegebene Welpenseite verweisen.',
-            en: 'The Welpen-Paket bundles the most important information for new owners (contract, pedigree, vaccinations, feeding). The QR code can point to a shared puppy page.',
-            ru: 'Welpen-Paket собирает ключевую информацию для новых владельцев (договор, родословная, прививки, кормление). QR ведёт на расшаренную страницу щенка.' }
+    text: { de: 'Dieses Demo zeigt die Übergabeübersicht als Beispiel-PDF. In der angemeldeten Beta können private Originalanlagen als ZIP ergänzt werden. Ein QR-Code erscheint nur bei ausdrücklich freigegebener Welpenseite.',
+            en: 'This demo shows a sample handover PDF. In the signed-in beta, private original attachments can be added as a ZIP. A QR code appears only for an explicitly published puppy page.',
+            ru: 'Демо показывает пример PDF с обзором передачи. В авторизованной бете приватные оригиналы можно включить в ZIP. QR-код появляется только для явно опубликованной страницы щенка.' }
   },
   privacy: {
     label: { de: 'Sichtbarkeit (Privat / Link / Öffentlich)', en: 'Visibility (Private / Link / Public)', ru: 'Видимость (Приват / Ссылка / Публично)' },
@@ -613,13 +610,13 @@ function renderDocs() {
   });
 
   list.innerHTML = items.map((it, i) => `
-    <div class="card dcd" data-i="${i}" onclick="docAction(${i})">
+    <button type="button" class="card dcd" data-i="${i}" onclick="docAction(${i})" style="text-align:left;font:inherit;color:inherit;cursor:pointer">
       <div class="dch">
         <div class="dci">${it.icon}</div>
         <div><div class="dct">${it.title}</div><div class="dcs">${it.sub}</div></div>
       </div>
       <p>${it.desc}</p>
-    </div>
+    </button>
   `).join('');
 
   window._docActions = items;
@@ -644,6 +641,9 @@ window.setSkipPreview = setSkipPreview;
 
 async function openPDFPreview(type, id) {
   STATE.currentPDF = { type, id };
+  const previewModal = document.getElementById('pdf-modal');
+  const trigger = document.activeElement;
+  if (!previewModal.contains(trigger)) previewModal._returnFocus = trigger;
 
   // Skip-preview shortcut: jump straight to download without opening the modal
   if (getSkipPreview()) {
@@ -659,7 +659,7 @@ async function openPDFPreview(type, id) {
     welpenpaket: { de: 'Welpen-Paket', en: 'Puppy Packet', ru: 'Пакет щенка' }
   };
   document.getElementById('pdf-mt').textContent = titles[type][STATE.lang] || titles[type].de;
-  document.getElementById('pdf-mss').textContent = STATE.lang === 'de' ? 'Vorschau · Klick «PDF herunterladen» für echtes PDF' : STATE.lang === 'en' ? 'Preview · Click «Download PDF» for actual PDF' : 'Превью · Нажмите «Скачать PDF» для реального PDF';
+  document.getElementById('pdf-mss').textContent = STATE.lang === 'de' ? 'Aktueller Beta-Entwurf · Beispieldaten · PDF mit auswählbarem Text' : STATE.lang === 'en' ? 'Current beta draft · sample data · PDF with selectable text' : 'Текущий черновик беты · примеры данных · PDF с выделяемым текстом';
 
   // Restore skip-preview checkbox state from localStorage so the user sees their current setting
   const skipBox = document.getElementById('pdf-skip-prev');
@@ -670,7 +670,7 @@ async function openPDFPreview(type, id) {
   m.classList.add('open');
   m.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
-  setTimeout(() => { const x = m.querySelector('.mx'); if (x) x.focus(); trapFocus(m); }, 50);
+  setTimeout(() => { if (!m.classList.contains('open')) return; const x = m.querySelector('.mx'); if (x) x.focus(); trapFocus(m); }, 50);
 
   try { await PDFLibs(); } catch (e) { console.warn('PDF libs load failed:', e); }
   // Never leave the modal stuck on the loading spinner if a template builder throws
@@ -784,6 +784,11 @@ function closePDF() {
   m.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
   STATE.currentPDF = null;
+  const trigger = m._returnFocus;
+  const target = trigger?.isConnected && trigger.getClientRects().length
+    ? trigger : document.querySelector('nav.tabs .tb.active');
+  if (target) target.focus({ preventScroll: true });
+  delete m._returnFocus;
 }
 
 // ===== COI Rechner =====

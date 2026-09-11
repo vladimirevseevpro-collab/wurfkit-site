@@ -1,0 +1,4 @@
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:100 1000;font-display:swap;src:url('./dmsans-normal.ttf') format('truetype')}
+@font-face{font-family:'DM Sans';font-style:italic;font-weight:100 1000;font-display:swap;src:url('./dmsans-italic.ttf') format('truetype')}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400 900;font-display:swap;src:url('./playfairdisplay-normal.ttf') format('truetype')}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400 900;font-display:swap;src:url('./playfairdisplay-italic.ttf') format('truetype')}
